@@ -8,23 +8,29 @@
 
 import UIKit
 
-class BusinessesViewController: UIViewController {
+class BusinessesViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
     
+    @IBOutlet weak var yelpTableView: UITableView!
     var businesses: [Business]!
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        yelpTableView.delegate = self
+        yelpTableView.dataSource = self
+        yelpTableView.rowHeight = UITableViewAutomaticDimension
+        yelpTableView.estimatedRowHeight = 100
         
         Business.searchWithTerm(term: "Thai", completion: { (businesses: [Business]?, error: Error?) -> Void in
             
             self.businesses = businesses
+            self.yelpTableView.reloadData()
             if let businesses = businesses {
                 for business in businesses {
                     print(business.name!)
                     print(business.address!)
                 }
             }
-            
+            print("reloaddata")
             }
         )
         
@@ -39,6 +45,21 @@ class BusinessesViewController: UIViewController {
          }
          */
         
+    }
+    
+    
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "BusinessCell", for: indexPath) as! BusinessCell
+        cell.business = businesses[indexPath.row]
+        return cell
+    }
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        if businesses != nil {
+            return businesses!.count
+        }
+        return 0
     }
     
     override func didReceiveMemoryWarning() {
