@@ -57,6 +57,10 @@ restaurant information as well.
 
 Here's a walkthrough of implemented user stories:
 
+<img alt="YelpClone" src="https://imgur.com/3k6DPip.gif" style="max-width: 100%;
+min-height: 686px;" original-title="">
+<img alt="YelpCloneFilters" src="http://imgur.com/1sqR9Sv.gif" style="max-width: 100%;
+min-height: 686px;" original-title="">
 <img src='http://i.imgur.com/link/to/your/gif/file.gif' title='Video
 Walkthrough' width='' alt='Video Walkthrough' />
 
