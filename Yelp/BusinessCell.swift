@@ -29,7 +29,9 @@ class BusinessCell: UITableViewCell {
             nameLabel.text = business.name
             numReviewsLabel.text = "\(business.reviewCount!) Reviews"
             starsImage.setImageWith(business.ratingImageURL!)
-            restaurantImageView.setImageWith(business.imageURL!)
+            if let url = business.imageURL {
+                restaurantImageView.setImageWith(url)
+            }
         }
     }
     override func awakeFromNib() {
